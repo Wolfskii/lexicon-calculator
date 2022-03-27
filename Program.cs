@@ -14,7 +14,6 @@ namespace Calculator
                 ShowMenu();
 
                 string userInput = Console.ReadLine();
-                Console.Clear();
 
                 switch (userInput)
                 {
@@ -35,6 +34,7 @@ namespace Calculator
                         break;
 
                     case "0":
+                        Console.Clear();
                         Console.WriteLine("Stänger av...");
                         continueMenu = false;
                         break;
@@ -50,57 +50,89 @@ namespace Calculator
             Console.WriteLine("2. Subtraktion");
             Console.WriteLine("3. Multiplikation");
             Console.WriteLine("4. Division");
-            Console.WriteLine("0. Avsluta");
+            Console.WriteLine("0. Avsluta\n");
         }
 
         public static void Addition()
         {
-            Console.WriteLine("Addition\n-----------------------");
-            double x = GetNumberInput("Ange den första termen:");
-            double y = GetNumberInput("Ange den andra termen:");
+            bool continueOperation = true;
 
-            double sum = x + y;
+            while (continueOperation)
+            {
+                Console.Clear();
+                Console.WriteLine("Addition\n-----------------------");
+                double x = GetNumberInput("Ange den första termen:");
+                double y = GetNumberInput("Ange den andra termen:");
 
-            Console.WriteLine($"{x} + {y} = {sum}");
+                double sum = x + y;
+
+                Console.WriteLine($"{x} + {y} = {sum}");
+
+                continueOperation = !BackToMainMenu();
+            }
         }
 
         public static void Subtraction()
         {
-            Console.WriteLine("Subtraktion\n-----------------------");
-            double x = GetNumberInput("Ange den första termen:");
-            double y = GetNumberInput("Ange den andra termen:");
+            bool continueOperation = true;
 
-            double difference = x - y;
+            while (continueOperation)
+            {
+                Console.Clear();
+                Console.WriteLine("Subtraktion\n-----------------------");
+                double x = GetNumberInput("Ange den första termen:");
+                double y = GetNumberInput("Ange den andra termen:");
 
-            Console.WriteLine($"{x} - {y} = {difference}");
+                double difference = x - y;
+
+                Console.WriteLine($"{x} - {y} = {difference}");
+
+                continueOperation = !BackToMainMenu();
+            }
         }
 
         public static void Multiplication()
         {
-            Console.WriteLine("Multiplikation\n-----------------------");
-            double x = GetNumberInput("Ange den första faktorn:");
-            double y = GetNumberInput("Ange den andra faktorn:");
+            bool continueOperation = true;
 
-            double product = x * y;
+            while (continueOperation)
+            {
+                Console.Clear();
+                Console.WriteLine("Multiplikation\n-----------------------");
+                double x = GetNumberInput("Ange den första faktorn:");
+                double y = GetNumberInput("Ange den andra faktorn:");
 
-            Console.WriteLine($"{x} x {y} = {product}");
+                double product = x * y;
+
+                Console.WriteLine($"{x} x {y} = {product}");
+
+                continueOperation = !BackToMainMenu();
+            }
         }
 
         public static void Division()
         {
-            Console.WriteLine("Division\n-----------------------");
-            double x = GetNumberInput("Ange täljare:");
-            double y = 0;
+            bool continueOperation = true;
 
-            while (y == 0)
+            while (continueOperation)
             {
-              y = GetNumberInput("Ange nämnare:");
-              if (y == 0) { Console.WriteLine("Fel! Nämnaren kan inte vara 0, försök igen."); }
+                Console.Clear();
+                Console.WriteLine("Division\n-----------------------");
+                double x = GetNumberInput("Ange täljare:");
+                double y = 0;
+
+                while (y == 0)
+                {
+                    y = GetNumberInput("Ange nämnare:");
+                    if (y == 0) { Console.WriteLine("Fel! Nämnaren kan inte vara 0, försök igen."); }
+                }
+
+                double quotient = x / y;
+
+                Console.WriteLine($"{x} / {y} = {quotient}");
+
+                continueOperation = !BackToMainMenu();
             }
-
-            double quotient = x / y;
-
-            Console.WriteLine($"{x} / {y} = {quotient}");
         }
 
         public static double GetNumberInput(string question)
@@ -116,6 +148,31 @@ namespace Calculator
             }
 
             return inputNumber;
+        }
+
+        public static bool BackToMainMenu()
+        {
+            bool backToMainMenu = true;
+            Console.WriteLine("\nTillbaka till huvudmenyn? (j/n)");
+
+            bool continueAsk = true;
+
+            while (continueAsk)
+            {
+                string userInput = Console.ReadLine().ToLower();
+
+                if (userInput == "j" || userInput == "ja")
+                {
+                    continueAsk = false;
+                    backToMainMenu = true;
+                } else if (userInput == "n" || userInput == "nej")
+                {
+                    continueAsk = false;
+                    backToMainMenu = false;
+                }
+            }
+
+            return backToMainMenu;
         }
     }
 }
