@@ -90,7 +90,13 @@ namespace Calculator
         {
             Console.WriteLine("Division\n-----------------------");
             double x = GetNumberInput("Ange täljare:");
-            double y = GetNumberInput("Ange nämnare:");
+            double y = 0;
+
+            while (y == 0)
+            {
+              y = GetNumberInput("Ange nämnare:");
+              if (y == 0) { Console.WriteLine("Fel! Nämnaren kan inte vara 0, försök igen."); }
+            }
 
             double quotient = x / y;
 
