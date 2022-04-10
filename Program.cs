@@ -18,19 +18,19 @@ namespace Calculator
                 switch (userInput)
                 {
                     case "1":
-                        Addition();
+                        PrintAddition();
                         break;
 
                     case "2":
-                        Subtraction();
+                        PrintSubtraction();
                         break;
 
                     case "3":
-                        Multiplication();
+                        PrintMultiplication();
                         break;
 
                     case "4":
-                        Division();
+                        PrintDivision();
                         break;
 
                     case "0":
@@ -53,7 +53,7 @@ namespace Calculator
             Console.WriteLine("0. Avsluta\n");
         }
 
-        public static void Addition()
+        public static void PrintAddition()
         {
             bool continueOperation = true;
 
@@ -64,7 +64,7 @@ namespace Calculator
                 double x = GetNumberInput("Ange den första termen:");
                 double y = GetNumberInput("Ange den andra termen:");
 
-                double sum = x + y;
+                double sum = Addition(x, y);
 
                 Console.WriteLine($"{x} + {y} = {sum}");
 
@@ -72,7 +72,7 @@ namespace Calculator
             }
         }
 
-        public static void Subtraction()
+        public static void PrintSubtraction()
         {
             bool continueOperation = true;
 
@@ -83,7 +83,7 @@ namespace Calculator
                 double x = GetNumberInput("Ange den första termen:");
                 double y = GetNumberInput("Ange den andra termen:");
 
-                double difference = x - y;
+                double difference = Subtraction(x, y);
 
                 Console.WriteLine($"{x} - {y} = {difference}");
 
@@ -91,7 +91,7 @@ namespace Calculator
             }
         }
 
-        public static void Multiplication()
+        public static void PrintMultiplication()
         {
             bool continueOperation = true;
 
@@ -102,7 +102,7 @@ namespace Calculator
                 double x = GetNumberInput("Ange den första faktorn:");
                 double y = GetNumberInput("Ange den andra faktorn:");
 
-                double product = x * y;
+                double product = Multiplication(x, y);
 
                 Console.WriteLine($"{x} x {y} = {product}");
 
@@ -110,7 +110,7 @@ namespace Calculator
             }
         }
 
-        public static void Division()
+        public static void PrintDivision()
         {
             bool continueOperation = true;
 
@@ -127,7 +127,7 @@ namespace Calculator
                     if (y == 0) { Console.WriteLine("Fel! Nämnaren kan inte vara 0, försök igen."); }
                 }
 
-                double quotient = x / y;
+                double quotient = Division(x, y);
 
                 Console.WriteLine($"{x} / {y} = {quotient}");
 
@@ -173,6 +173,26 @@ namespace Calculator
             }
 
             return backToMainMenu;
+        }
+
+        public static double Addition(double x, double y)
+        {
+            return x + y;
+        }
+
+        public static double Subtraction(double x, double y)
+        {
+            return x - y;
+        }
+
+        public static double Multiplication(double x, double y)
+        {
+            return x * y;
+        }
+
+        public static double Division(double x, double y)
+        {
+            return x / y;
         }
     }
 }
