@@ -180,9 +180,33 @@ namespace Calculator
             return x + y;
         }
 
+        public static double Addition(double[] numbers)
+        {
+            double sum = 0;
+
+            foreach (double number in numbers)
+            {
+                sum += number;
+            }
+
+            return sum;
+        }
+
         public static double Subtraction(double x, double y)
         {
             return x - y;
+        }
+
+        public static double Subtraction(double[] numbers)
+        {
+            double difference = numbers[0]; // Adds the first number
+
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                difference -= numbers[i]; // And subtracts all other numbers
+            }
+
+            return difference;
         }
 
         public static double Multiplication(double x, double y)
