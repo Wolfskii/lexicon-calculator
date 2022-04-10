@@ -1,3 +1,3 @@
 # Calculator
 
-## Lexicon - Assignment 1
+## Lexicon - Assignment 1 & 3
