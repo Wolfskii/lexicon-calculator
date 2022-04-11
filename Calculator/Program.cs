@@ -218,5 +218,17 @@ namespace Calculator
         {
             return x / y;
         }
+
+        public static double Division(int x, int y)
+        {
+            try
+            {
+                return x / y;
+            }
+            catch (DivideByZeroException)
+            {
+                return double.NaN;
+            }
+        }
     }
 }

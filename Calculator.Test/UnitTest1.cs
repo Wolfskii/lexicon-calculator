@@ -101,13 +101,25 @@ namespace Calculator.Tests
             // Arrange
             double a = 15;
             double b = 0;
-            double quotient = a / b;
+            double c = -15;
+            double quotient1 = double.PositiveInfinity;
+            double quotient2 = double.NegativeInfinity;
+
+            int d = 10;
+            int e = 0;
+            double quotient3 = double.NaN;
 
             // Act
-            double division = Calculator.Program.Division(a, b);
+            double division1 = Calculator.Program.Division(a, b);
+            double division2 = Calculator.Program.Division(c, b);
+
+            double division3 = Calculator.Program.Division(d, e);
 
             // Assert
-            Assert.Equal(division, quotient);
+            Assert.Equal(division1, quotient1);
+            Assert.Equal(division2, quotient2);
+
+            Assert.Equal(division3, quotient3);
         }
     }
 }
